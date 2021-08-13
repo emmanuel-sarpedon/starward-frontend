@@ -1,0 +1,20 @@
+.header {
+  header {
+    display: flex;
+    justify-content: center;
+    img {
+      max-width: 60vw;
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    header {
+      img {
+        max-width: 300px;
+      }
+    }
+  }
+}
