@@ -17,13 +17,17 @@ const Home = () => {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(async () => {
-    const url = "http://localhost:5000/";
-    const response = await axios.get(url + "characters");
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = "http://localhost:5000/";
+      const response = await axios.get(url + "characters");
 
-    setCharacters(response.data.data);
+      setCharacters(response.data.data);
 
-    setIsLoading(false);
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, []);
 
   return (
