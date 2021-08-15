@@ -12,6 +12,7 @@ import Header from "./Components/Header/Header";
 import Menu from "./Components/Menu/Menu";
 import Home from "./Page/Home/Home";
 import Create from "./Page/Create/Create";
+import Character from "./Page/Character/Character";
 
 // HOOKS
 import { useState } from "react";
@@ -32,10 +33,13 @@ function App() {
       <Router>
         <Menu hidden={menuIsHidden} handleCloseMenu={handleCloseMenu} />
         <div className="container">
-          <Header handleOpenMenu={handleOpenMenu} />
+          <Header menuIsHidden={menuIsHidden} handleOpenMenu={handleOpenMenu} />
           <Switch>
             <Route exact path="/create">
               <Create />
+            </Route>
+            <Route path="/character/:id">
+              <Character />
             </Route>
             <Route path="/update">Mise à jour d'un personnage</Route>
             <Route exact path="/">

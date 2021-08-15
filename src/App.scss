@@ -2,6 +2,51 @@
   display: flex;
 
   .container {
-    margin: 0 auto;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  button {
+    background-color: yellow;
+    margin: 20px auto;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid yellow;
+
+    &:hover {
+      background-color: inherit;
+      color: white;
+      cursor: pointer;
+      border-radius: 0px;
+      animation: sparkling-button 0.08s linear 0s infinite;
+    }
+  }
+
+  .toggle-menu {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    color: yellow;
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+  }
+
+  @keyframes sparkling-button {
+    0% {
+      border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+    }
+
+    50% {
+      border-bottom: 1px solid rgba(255, 0, 0, 1);
+    }
+
+    100% {
+      border-bottom: 1px solid rgba(255, 0, 0, 0.4);
+    }
   }
 }

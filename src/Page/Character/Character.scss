@@ -1,0 +1,24 @@
+.character {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    margin: 10px auto;
+  }
+  img {
+    max-width: 50vw;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  }
+}
