@@ -34,7 +34,11 @@ const Home = () => {
     <div className="home">
       {isLoading
         ? "Chargement en cours..."
-        : characters.map((e, i) => <Card key={i} title={e.name} />)}
+        : characters.map((e, i) => (
+            <Link to={`/character/${e._id}`}>
+              <Card key={i} image={e.picture_url} title={e.name} />
+            </Link>
+          ))}
     </div>
   );
 };
