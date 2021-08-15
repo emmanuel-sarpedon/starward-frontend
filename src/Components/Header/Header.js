@@ -10,13 +10,17 @@ import { Link } from "react-router-dom";
 // COMPONENTS
 
 const Header = (props) => {
-  const { handleOpenMenu } = props;
+  const { menuIsHidden, handleOpenMenu } = props;
 
   return (
     <div className="header">
       <header>
+        <i
+          onClick={handleOpenMenu}
+          class="fas fa-bars fa-1x toggle-menu"
+          style={{ display: `${!menuIsHidden ? "none" : "block"}` }}
+        ></i>
         <img src={logo} alt="star-wars" />
-        <button onClick={handleOpenMenu}>Open</button>
       </header>
     </div>
   );

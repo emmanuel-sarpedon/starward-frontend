@@ -15,13 +15,17 @@ const Menu = (props) => {
 
   return (
     <div className={`menu ${hidden && "hidden"}`}>
-      <button onClick={handleCloseMenu}>Close</button>
-
-      <Link to="/create">
-        <button>Créer</button>
+      <i
+        class="fas fa-times fa-1x toggle-menu"
+        onClick={handleCloseMenu}
+        style={{ display: `${hidden ? "none" : "block"}` }}
+      ></i>
+      <Link to="/" onClick={handleCloseMenu}>
+        Accueil
       </Link>
-      <Link to="/update">Modifier</Link>
-      <Link to="/">Home</Link>
+      <Link to="/create" onClick={handleCloseMenu}>
+        Créer un personnage
+      </Link>
     </div>
   );
 };
