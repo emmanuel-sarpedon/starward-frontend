@@ -10,11 +10,11 @@ import logo from "../../assets/star-wars-logo.jpeg";
 // HOOKS
 
 const Card = (props) => {
-  const { title } = props;
+  const { image, title } = props;
 
   return (
     <div className="card">
-      <img src={logo} alt="" />
+      <img src={image ? image : logo} alt="" />
       <div className="name-character">{title}</div>
     </div>
   );
