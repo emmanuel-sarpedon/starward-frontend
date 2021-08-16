@@ -44,6 +44,7 @@ const Create = () => {
         hair_color: hairColor,
         skin_color: skinColor,
         eye_color: eyeColor,
+        birth_year: birthYear,
         gender: gender,
         species: species,
         films: films,
@@ -57,6 +58,21 @@ const Create = () => {
       if (response.status === 201) {
         setIsLoading(false);
         setIsSaved(true);
+
+        // RAZ du formulaire
+        setName("");
+        setHeight("");
+        setMass("");
+        setHairColor("");
+        setSkinColor("");
+        setEyeColor("");
+        setBirthYear("");
+        setGender("");
+        setSpecies("");
+        setFilms("");
+        setVehicles("");
+        setStarships("");
+        setPictureUrl("");
       }
     } catch (error) {
       alert(error);
