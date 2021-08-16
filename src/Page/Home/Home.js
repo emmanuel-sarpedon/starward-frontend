@@ -21,7 +21,7 @@ const Home = () => {
   const [numberOfResults, setNumberOfResults] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(5);
 
-  const url = "http://localhost:5000/characters/?";
+  const url = "https://starwars-app-manu.herokuapp.com/?";
   const location = useLocation(); // représente l'url
   const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
   const page = Math.min(parseInt(params.page), numberOfPages) || 1;

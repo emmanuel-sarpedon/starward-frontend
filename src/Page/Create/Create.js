@@ -12,7 +12,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const Create = () => {
-  const url = "http://localhost:5000/character/create";
+  const url = "https://starwars-app-manu.herokuapp.com/";
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);

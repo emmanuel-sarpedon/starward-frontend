@@ -21,7 +21,7 @@ const Character = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const url = "http://localhost:5000/";
+      const url = "https://starwars-app-manu.herokuapp.com/";
       const response = await axios.get(url + "character/" + id);
       console.log(response.data);
 
