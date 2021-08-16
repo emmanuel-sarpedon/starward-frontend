@@ -47,7 +47,7 @@ const Home = () => {
           ></input>
         </label>
       </div>
-      <div className="characters-card">
+      <div className="characters-cards">
         {isLoading
           ? "Chargement en cours..."
           : characters.map((e, i) => (

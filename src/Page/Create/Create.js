@@ -15,7 +15,7 @@ const Create = () => {
   const url = "http://localhost:5000/character/create";
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isSaved, setIsSaved] = useState(true);
+  const [isSaved, setIsSaved] = useState(false);
 
   const [name, setName] = useState("");
   const [height, setHeight] = useState("");
@@ -67,164 +67,166 @@ const Create = () => {
 
   return (
     <div className="create">
-      <h1>Créer un nouveau personnage</h1>
-      {isLoading ? (
-        "Enregistrement en cours "
-      ) : isSaved ? (
-        <>
-          <div>Création réussie !</div>
-          <button
-            onClick={() => {
-              setIsLoading(false);
-              setIsSaved(false);
-            }}
-          >
-            Créer un nouveau personnage
-          </button>
-        </>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Nom
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
+      <div className="container">
+        <h1>Créer un nouveau personnage</h1>
+        {isLoading ? (
+          "Enregistrement en cours "
+        ) : isSaved ? (
+          <>
+            <div>Création réussie !</div>
+            <button
+              onClick={() => {
+                setIsLoading(false);
+                setIsSaved(false);
               }}
-              required
-            />
-          </label>
-          <label>
-            Taille
-            <input
-              type="number"
-              value={height}
-              onChange={(e) => {
-                setHeight(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Poids
-            <input
-              type="number"
-              value={mass}
-              onChange={(e) => {
-                setMass(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Couleur des cheveux
-            <input
-              type="text"
-              value={hairColor}
-              onChange={(e) => {
-                setHairColor(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Couleur de la peau
-            <input
-              type="text"
-              value={skinColor}
-              onChange={(e) => {
-                setSkinColor(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Couleur des yeux
-            <input
-              type="text"
-              value={eyeColor}
-              onChange={(e) => {
-                setEyeColor(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Année de naissance
-            <input
-              type="text"
-              value={birthYear}
-              onChange={(e) => {
-                setBirthYear(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Genre
-            <input
-              type="text"
-              value={gender}
-              onChange={(e) => {
-                setGender(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Espèce
-            <input
-              type="text"
-              value={species}
-              onChange={(e) => {
-                setSpecies(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Film
-            <input
-              type="text"
-              value={films}
-              onChange={(e) => {
-                setFilms(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Véhicule
-            <input
-              type="text"
-              value={vehicles}
-              onChange={(e) => {
-                setVehicles(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Planète
-            <input
-              type="text"
-              value={starships}
-              onChange={(e) => {
-                setStarships(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Url image
-            <input
-              type="text"
-              value={pictureUrl}
-              onChange={(e) => {
-                setPictureUrl(e.target.value);
-              }}
-            />
-          </label>
-          <button>Créer personnage</button>
-        </form>
-      )}
+            >
+              Créer un nouveau personnage
+            </button>
+          </>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <label>
+              Nom
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Taille
+              <input
+                type="number"
+                value={height}
+                onChange={(e) => {
+                  setHeight(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Poids
+              <input
+                type="number"
+                value={mass}
+                onChange={(e) => {
+                  setMass(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Couleur des cheveux
+              <input
+                type="text"
+                value={hairColor}
+                onChange={(e) => {
+                  setHairColor(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Couleur de la peau
+              <input
+                type="text"
+                value={skinColor}
+                onChange={(e) => {
+                  setSkinColor(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Couleur des yeux
+              <input
+                type="text"
+                value={eyeColor}
+                onChange={(e) => {
+                  setEyeColor(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Année de naissance
+              <input
+                type="text"
+                value={birthYear}
+                onChange={(e) => {
+                  setBirthYear(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Genre
+              <input
+                type="text"
+                value={gender}
+                onChange={(e) => {
+                  setGender(e.target.value);
+                }}
+                required
+              />
+            </label>
+            <label>
+              Espèce
+              <input
+                type="text"
+                value={species}
+                onChange={(e) => {
+                  setSpecies(e.target.value);
+                }}
+              />
+            </label>
+            <label>
+              Film
+              <input
+                type="text"
+                value={films}
+                onChange={(e) => {
+                  setFilms(e.target.value);
+                }}
+              />
+            </label>
+            <label>
+              Véhicule
+              <input
+                type="text"
+                value={vehicles}
+                onChange={(e) => {
+                  setVehicles(e.target.value);
+                }}
+              />
+            </label>
+            <label>
+              Planète
+              <input
+                type="text"
+                value={starships}
+                onChange={(e) => {
+                  setStarships(e.target.value);
+                }}
+              />
+            </label>
+            <label>
+              Url image
+              <input
+                type="text"
+                value={pictureUrl}
+                onChange={(e) => {
+                  setPictureUrl(e.target.value);
+                }}
+              />
+            </label>
+            <button>Créer personnage</button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };

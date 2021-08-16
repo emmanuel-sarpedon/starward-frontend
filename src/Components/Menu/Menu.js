@@ -14,12 +14,13 @@ const Menu = (props) => {
   const { hidden, handleCloseMenu } = props;
 
   return (
-    <div className={`menu ${hidden && "hidden"}`}>
-      <i
+    <div className={`menu ${hidden ? "hidden" : ""}`}>
+      <i // îcone pour fermeture du menu
         class="fas fa-times fa-1x toggle-menu"
         onClick={handleCloseMenu}
         style={{ display: `${hidden ? "none" : "block"}` }}
       ></i>
+
       <Link to="/" onClick={handleCloseMenu}>
         Accueil
       </Link>

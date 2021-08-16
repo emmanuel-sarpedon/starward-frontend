@@ -18,7 +18,7 @@ const Header = (props) => {
         <i
           onClick={handleOpenMenu}
           class="fas fa-bars fa-1x toggle-menu"
-          style={{ display: `${!menuIsHidden ? "none" : "block"}` }}
+          style={{ display: `${!menuIsHidden ? "none" : "block"}` }} // si le menu est visible, on cache l'icône
         ></i>
         <img src={logo} alt="star-wars" />
       </header>

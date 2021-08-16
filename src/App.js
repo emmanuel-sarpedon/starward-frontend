@@ -32,8 +32,10 @@ function App() {
     <div className="app">
       <Router>
         <Menu hidden={menuIsHidden} handleCloseMenu={handleCloseMenu} />
+
         <div className="container">
           <Header menuIsHidden={menuIsHidden} handleOpenMenu={handleOpenMenu} />
+
           <Switch>
             <Route exact path="/create">
               <Create />
@@ -41,7 +43,7 @@ function App() {
             <Route path="/character/:id">
               <Character />
             </Route>
-            <Route path="/update">Mise à jour d'un personnage</Route>
+
             <Route exact path="/">
               <Home />
             </Route>

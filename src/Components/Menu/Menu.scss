@@ -6,15 +6,15 @@
   max-width: 200px;
   padding: 50px;
   display: flex;
-  transition: all 1s;
+  transition: all 0.4s;
   flex-direction: column;
   overflow: hidden;
-  animation: sparkling-menu 0.08s linear 0s infinite;
+  animation: sparkling-menu 3s linear 0s infinite;
 
   &.hidden {
     padding: 50px 0px;
     opacity: 0;
-    transition: all 1s;
+    transition: all 0.4s;
   }
 
   a {
@@ -22,9 +22,13 @@
     text-decoration: none;
     margin: 0 auto;
     margin-top: 50px;
+    text-align: center;
 
     &:hover {
       color: red;
+      &::before {
+        content: "*    ";
+      }
     }
   }
 
@@ -34,14 +38,54 @@
       border-right: 1px solid rgba(255, 0, 0, 0.1);
     }
 
+    10% {
+      box-shadow: 0 1px 15px red;
+      border-right: 1px solid rgba(255, 0, 0, 1);
+    }
+
+    20% {
+      box-shadow: 0 1px 15px blue;
+      border-right: 1px solid rgba(0, 0, 255, 0.4);
+    }
+
+    30% {
+      box-shadow: 0 1px 15px blue;
+      border-right: 1px solid rgba(0, 0, 255, 1);
+    }
+
+    40% {
+      box-shadow: 0 1px 15px green;
+      border-right: 1px solid rgba(0, 255, 0, 0.4);
+    }
+
     50% {
+      box-shadow: 0 1px 15px green;
+      border-right: 1px solid rgba(0, 255, 0, 1);
+    }
+
+    60% {
+      box-shadow: 0 1px 15px purple;
+      border-right: 1px solid rgba(140, 20, 252, 0.4);
+    }
+
+    70% {
+      box-shadow: 0 1px 15px purple;
+      border-right: 1px solid rgba(140, 20, 252, 1);
+    }
+
+    80% {
+      box-shadow: 0 1px 5px #6c282b;
+      border-right: 1px solid rgba(255, 0, 0, 0.1);
+    }
+
+    90% {
       box-shadow: 0 1px 15px red;
       border-right: 1px solid rgba(255, 0, 0, 1);
     }
 
     100% {
-      box-shadow: 0 1px 5px #6c282b;
-      border-right: 1px solid rgba(255, 0, 0, 0.4);
+      box-shadow: 0 1px 15px white;
+      border-right: 1px solid rgba(255, 0, 0, 0.1);
     }
   }
 }

@@ -20,6 +20,10 @@
     }
   }
 
+  .characters-card {
+    max-width: 90vw;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -28,7 +32,7 @@
 
 @media (min-width: 728px) {
   .home {
-    .characters-card {
+    .characters-cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
