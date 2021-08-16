@@ -81,11 +81,15 @@ const Home = () => {
       </div>
 
       <div className="pagination">
-        <div>Nombre de résultats : {numberOfResults}</div>
+        <div>Nombre de résultats : {numberOfResults || 0}</div>
         <div>
-          <span>Résultats : {(page - 1) * limit + 1}</span>
-          <span> à </span>
-          <span>{Math.min(page * limit, numberOfResults)}</span>
+          {numberOfResults && (
+            <>
+              <span>Résultats : {(page - 1) * limit + 1}</span>
+              <span> à </span>
+              <span>{Math.min(page * limit, numberOfResults)}</span>
+            </>
+          )}
         </div>
         <div className="page-links">{paginationLinks}</div>
       </div>
@@ -93,11 +97,13 @@ const Home = () => {
       <div className="characters-cards">
         {isLoading
           ? "Chargement en cours..."
-          : characters.map((e, i) => (
+          : characters
+          ? characters.map((e, i) => (
               <Link className="character-card" to={`/character/${e._id}`}>
                 <Card key={i} image={e.picture_url} title={e.name} />
               </Link>
-            ))}
+            ))
+          : "No results . . . *"}
       </div>
     </div>
   );
