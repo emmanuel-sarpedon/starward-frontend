@@ -20,8 +20,39 @@
     }
   }
 
-  .characters-card {
+  .pagination {
+    margin-top: 30px;
+
+    .page-links {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 25px;
+
+      .page-link {
+        padding: 5px;
+
+        &.active {
+          background-color: yellow;
+          color: black;
+        }
+
+        &:hover {
+          background-color: red;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .characters-cards {
     max-width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .character-card {
+      margin-top: 20px;
+    }
   }
 
   a {
@@ -34,8 +65,13 @@
   .home {
     .characters-cards {
       display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-evenly;
+
+      .character-card {
+        margin-right: 20px;
+      }
     }
   }
 }

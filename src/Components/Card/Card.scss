@@ -6,7 +6,6 @@
   width: 80vw;
   max-width: 400px;
   height: 200px;
-  margin: 30px auto;
 
   img {
     object-position: 50% 50%;
@@ -22,10 +21,11 @@
     align-items: center;
     border-top: solid 2px yellow;
   }
-}
 
-@media (min-width: 728px) {
-  .card {
-    margin: 30px auto 0 30px;
+  &:hover {
+    .name-character {
+      box-shadow: 0 0 10px red;
+      border-top: solid 2px red;
+    }
   }
 }

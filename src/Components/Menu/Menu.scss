@@ -6,7 +6,7 @@
   max-width: 200px;
   padding: 50px;
   display: flex;
-  transition: all 0.4s;
+
   flex-direction: column;
   overflow: hidden;
   animation: sparkling-menu 3s linear 0s infinite;
@@ -14,7 +14,7 @@
   &.hidden {
     padding: 50px 0px;
     opacity: 0;
-    transition: all 0.4s;
+    display: none;
   }
 
   a {
@@ -27,7 +27,7 @@
     &:hover {
       color: red;
       &::before {
-        content: "*    ";
+        content: "* ";
       }
     }
   }
