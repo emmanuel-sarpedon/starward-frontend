@@ -24,7 +24,7 @@ const Home = () => {
   const url = "http://localhost:5000/characters/?";
   const location = useLocation(); // représente l'url
   const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
-  const page = parseInt(params.page) || 1;
+  const page = Math.min(parseInt(params.page), numberOfPages) || 1;
   const limit = parseInt(params.limit) || 5;
 
   useEffect(() => {
@@ -49,6 +49,7 @@ const Home = () => {
     fetchData();
   }, [nameFilter, page, limit]);
 
+  // Pagination
   const paginationLinks = [];
 
   for (let i = 1; i <= numberOfPages; i++) {
@@ -66,34 +67,37 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="container">
-        <div className="filter">
-          <label>
-            Filtrer par nom :
-            <input
-              type="search"
-              value={nameFilter}
-              onChange={(e) => {
-                setNameFilter(e.target.value);
-              }}
-            ></input>
-          </label>
-        </div>
+      <div className="filter">
+        <label>
+          Filtrer par nom :
+          <input
+            type="search"
+            value={nameFilter}
+            onChange={(e) => {
+              setNameFilter(e.target.value);
+            }}
+          ></input>
+        </label>
+      </div>
 
-        <div className="pagination">
-          <div>Nombre de résultats : {numberOfResults}</div>
-          <div className="page-links">{paginationLinks}</div>
+      <div className="pagination">
+        <div>Nombre de résultats : {numberOfResults}</div>
+        <div>
+          <span>Résultats : {(page - 1) * limit + 1}</span>
+          <span> à </span>
+          <span>{Math.min(page * limit, numberOfResults)}</span>
         </div>
+        <div className="page-links">{paginationLinks}</div>
+      </div>
 
-        <div className="characters-cards">
-          {isLoading
-            ? "Chargement en cours..."
-            : characters.map((e, i) => (
-                <Link className="character-card" to={`/character/${e._id}`}>
-                  <Card key={i} image={e.picture_url} title={e.name} />
-                </Link>
-              ))}
-        </div>
+      <div className="characters-cards">
+        {isLoading
+          ? "Chargement en cours..."
+          : characters.map((e, i) => (
+              <Link className="character-card" to={`/character/${e._id}`}>
+                <Card key={i} image={e.picture_url} title={e.name} />
+              </Link>
+            ))}
       </div>
     </div>
   );

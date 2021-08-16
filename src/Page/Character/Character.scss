@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
 
+  margin: 0 auto;
+
   h2 {
     margin: 10px auto;
   }
@@ -12,6 +14,7 @@
   }
 
   .details {
+    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",

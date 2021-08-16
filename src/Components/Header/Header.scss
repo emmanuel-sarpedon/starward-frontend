@@ -1,60 +1,24 @@
 .header {
+  position: fixed;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.685);
+  border: 1px solid black;
+  z-index: 1;
+  box-sizing: border-box;
   header {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin: 0 auto;
-    animation: sparkling-header 10s linear 0s infinite;
+
     img {
       display: block;
       margin: 0 auto;
     }
   }
-}
 
-@keyframes sparkling-header {
-  0% {
-    border-bottom: 1px solid rgba(255, 0, 0, 0.1);
-  }
-
-  10% {
-    border-bottom: 1px solid rgba(255, 0, 0, 1);
-  }
-
-  20% {
-    border-bottom: 1px solid rgba(0, 0, 255, 0.4);
-  }
-
-  30% {
-    border-bottom: 1px solid rgba(0, 0, 255, 1);
-  }
-
-  40% {
-    border-bottom: 1px solid rgba(0, 255, 0, 0.4);
-  }
-
-  50% {
-    border-bottom: 1px solid rgba(0, 255, 0, 1);
-  }
-
-  60% {
-    border-bottom: 1px solid rgba(140, 20, 252, 0.4);
-  }
-
-  70% {
-    border-bottom: 1px solid rgba(140, 20, 252, 1);
-  }
-
-  80% {
-    border-bottom: 1px solid rgba(255, 0, 0, 0.1);
-  }
-
-  90% {
-    border-bottom: 1px solid rgba(255, 0, 0, 1);
-  }
-
-  100% {
-    border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+  &:hover {
+    animation: sparkling 3s linear infinite;
   }
 }
 

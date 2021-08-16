@@ -32,10 +32,8 @@ function App() {
     <div className="app">
       <Router>
         <Menu hidden={menuIsHidden} handleCloseMenu={handleCloseMenu} />
-
+        <Header menuIsHidden={menuIsHidden} handleOpenMenu={handleOpenMenu} />
         <div className="container">
-          <Header menuIsHidden={menuIsHidden} handleOpenMenu={handleOpenMenu} />
-
           <Switch>
             <Route exact path="/create">
               <Create />

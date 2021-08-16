@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: rgb(36, 35, 35);
-  width: 80vw;
   max-width: 400px;
   height: 200px;
+  border: 1px solid lightslategrey;
+  min-width: 350px;
 
   img {
     object-position: 50% 50%;
@@ -23,6 +24,7 @@
   }
 
   &:hover {
+    animation: sparkling 0.1s linear 0s infinite;
     .name-character {
       box-shadow: 0 0 10px red;
       border-top: solid 2px red;

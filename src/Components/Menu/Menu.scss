@@ -1,15 +1,15 @@
 .menu {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.85);
+  padding-top: 150px;
   height: 100vh;
-  width: auto;
-  max-width: 200px;
-  padding: 50px;
+  width: 100vw;
+  box-sizing: border-box;
   display: flex;
-
+  z-index: 2;
   flex-direction: column;
   overflow: hidden;
-  animation: sparkling-menu 3s linear 0s infinite;
+  animation: sparkling 3s linear 0s infinite;
 
   &.hidden {
     padding: 50px 0px;
@@ -29,63 +29,6 @@
       &::before {
         content: "* ";
       }
-    }
-  }
-
-  @keyframes sparkling-menu {
-    0% {
-      box-shadow: 0 1px 5px #6c282b;
-      border-right: 1px solid rgba(255, 0, 0, 0.1);
-    }
-
-    10% {
-      box-shadow: 0 1px 15px red;
-      border-right: 1px solid rgba(255, 0, 0, 1);
-    }
-
-    20% {
-      box-shadow: 0 1px 15px blue;
-      border-right: 1px solid rgba(0, 0, 255, 0.4);
-    }
-
-    30% {
-      box-shadow: 0 1px 15px blue;
-      border-right: 1px solid rgba(0, 0, 255, 1);
-    }
-
-    40% {
-      box-shadow: 0 1px 15px green;
-      border-right: 1px solid rgba(0, 255, 0, 0.4);
-    }
-
-    50% {
-      box-shadow: 0 1px 15px green;
-      border-right: 1px solid rgba(0, 255, 0, 1);
-    }
-
-    60% {
-      box-shadow: 0 1px 15px purple;
-      border-right: 1px solid rgba(140, 20, 252, 0.4);
-    }
-
-    70% {
-      box-shadow: 0 1px 15px purple;
-      border-right: 1px solid rgba(140, 20, 252, 1);
-    }
-
-    80% {
-      box-shadow: 0 1px 5px #6c282b;
-      border-right: 1px solid rgba(255, 0, 0, 0.1);
-    }
-
-    90% {
-      box-shadow: 0 1px 15px red;
-      border-right: 1px solid rgba(255, 0, 0, 1);
-    }
-
-    100% {
-      box-shadow: 0 1px 15px white;
-      border-right: 1px solid rgba(255, 0, 0, 0.1);
     }
   }
 }

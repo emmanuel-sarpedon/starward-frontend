@@ -2,7 +2,7 @@
 import "./Header.scss";
 
 // ASSETS
-import logo from "../../assets/star-wars-logo.jpeg";
+import logo from "../../assets/star-wars-header.svg";
 
 // DEPENDANCIES
 import { Link } from "react-router-dom";
