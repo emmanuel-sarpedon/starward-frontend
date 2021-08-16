@@ -2,7 +2,7 @@
 import "./Card.scss";
 
 // ASSETS
-import logo from "../../assets/star-wars-logo.jpeg";
+import logo from "../../assets/star-wars-logo2.jpeg";
 // DEPENDANCIES
 
 // COMPONENTS
