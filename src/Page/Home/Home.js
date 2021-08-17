@@ -18,20 +18,20 @@ const Home = () => {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nameFilter, setNameFilter] = useState("");
+  const [limit, setLimit] = useState(5);
   const [numberOfResults, setNumberOfResults] = useState(0);
-  const [numberOfPages, setNumberOfPages] = useState(5);
+  const [numberOfPages, setNumberOfPages] = useState(0);
 
   const url = "https://starwars-app-manu.herokuapp.com/characters/?";
   const location = useLocation(); // représente l'url
   const params = qs.parse(location.search.substring(1)); // transforme "?page=1" en objet {page:1}
   const page = Math.min(parseInt(params.page), numberOfPages) || 1;
-  const limit = parseInt(params.limit) || 5;
 
   useEffect(() => {
     const fetchData = async () => {
       const queryParams = qs.stringify({
         page: page,
-        limit: limit,
+        limit: Math.max(limit, 1),
         name: nameFilter,
       });
 
@@ -41,7 +41,7 @@ const Home = () => {
 
       setNumberOfResults(response.data.count);
 
-      setNumberOfPages(Math.ceil(response.data.count / limit));
+      setNumberOfPages(Math.ceil(response.data.count / Math.max(limit, 1)));
 
       setIsLoading(false);
     };
@@ -88,19 +88,30 @@ const Home = () => {
         <div>
           {numberOfResults && (
             <>
-              <span>Résultats : {(page - 1) * limit + 1}</span>
+              <span>Résultats : {(page - 1) * Math.max(limit, 1) + 1}</span>
               <span> à </span>
-              <span>{Math.min(page * limit, numberOfResults)}</span>
+              <span>
+                {Math.min(page * Math.max(limit, 1), numberOfResults)}
+              </span>
             </>
           )}
         </div>
+        <label className="limit">
+          Nombre de résultats par page :
+          <input
+            type="number"
+            min={1}
+            value={limit}
+            onChange={(e) => setLimit(Math.max(e.target.value, 1))}
+          ></input>
+        </label>
         <div className="page-links">{paginationLinks}</div>
       </div>
 
       <div className="characters-cards">
         {isLoading
           ? "Chargement en cours..."
-          : characters
+          : characters.length !== 0
           ? characters.map((e, i) => (
               <Link className="character-card" to={`/character/${e._id}`}>
                 <Card key={i} image={e.picture_url} title={e.name} />

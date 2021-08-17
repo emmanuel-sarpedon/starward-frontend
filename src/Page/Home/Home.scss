@@ -46,6 +46,26 @@
     }
   }
 
+  .limit {
+    input {
+      background-color: inherit;
+      border: none;
+      border-bottom: 1px solid white;
+      color: inherit;
+      font-family: "Starwars";
+      font-size: 1.1rem;
+      margin-left: 10px;
+      width: 50px;
+      text-align: right;
+      outline: unset;
+
+      &:focus {
+        color: yellow;
+        border-bottom: 1px solid yellow;
+      }
+    }
+  }
+
   .characters-cards {
     max-width: 90vw;
     margin: 0 auto;
