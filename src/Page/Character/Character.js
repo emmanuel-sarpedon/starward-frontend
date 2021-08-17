@@ -15,14 +15,35 @@ import { useState, useEffect } from "react";
 
 const Character = () => {
   const { id } = useParams();
+
+  // Déclaration des states
   const [character, setCharacter] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  // Déclaration des champs à afficher
+  const fields = [
+    { name: "Nom du personnage", value: character.name },
+    { name: "Taille", value: character.height },
+    { name: "Poids", value: character.mass },
+    { name: "Couleur des cheveux", value: character.hair_color },
+    { name: "Couleur de la peau", value: character.skin_color },
+    { name: "Couleur des yeux", value: character.eye_color },
+    { name: "Année de naissance", value: character.birth_year },
+    { name: "Genre", value: character.gender },
+    { name: "Espèce", value: character.species },
+    { name: "Film", value: character.films },
+    { name: "Véhicule", value: character.vehicles },
+    { name: "Vaisseau spatial", value: character.starships },
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
+
       const url = "https://starwars-app-manu.herokuapp.com/";
+
       const response = await axios.get(url + "character/" + id);
+
       console.log(response.data);
 
       setCharacter(response.data);
@@ -30,7 +51,7 @@ const Character = () => {
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <div className="character">
@@ -40,56 +61,21 @@ const Character = () => {
         <>
           <h1>Détails du personnage</h1>
 
-          <img src={character.picture_url ? character.picture_url : logo} />
+          <img
+            src={character.picture_url ? character.picture_url : logo}
+            alt={character.name}
+          />
+
           <div className="details">
-            <div>
-              <span>Nom :</span>
-              <span>{character.name}</span>
-            </div>
-            <div>
-              <span>Taille :</span>
-              <span>{character.height}</span>
-            </div>
-            <div>
-              <span>Poids :</span>
-              <span>{character.mass}</span>
-            </div>
-            <div>
-              <span>Couleur des cheveux :</span>
-              <span>{character.hair_color}</span>
-            </div>
-            <div>
-              <span>Couleur de la peau :</span>
-              <span>{character.skin_color}</span>
-            </div>
-            <div>
-              <span>Couleur des yeux :</span>
-              <span>{character.eye_color}</span>
-            </div>
-            <div>
-              <span>Année de naissance :</span>
-              <span>{character.birth_year}</span>
-            </div>
-            <div>
-              <span>Genre :</span>
-              <span>{character.gender}</span>
-            </div>
-            <div>
-              <span>Espèce :</span>
-              <span>{character.species}</span>
-            </div>
-            <div>
-              <span>Film :</span>
-              <span>{character.films}</span>
-            </div>
-            <div>
-              <span>Véhicule :</span>
-              <span>{character.vehicles}</span>
-            </div>
-            <div>
-              <span>Planète :</span>
-              <span>{character.starships}</span>
-            </div>
+            {fields.map(
+              (e) =>
+                e.value && ( // exclut les champs vides
+                  <div>
+                    <span>{e.name} :</span>
+                    <span>{e.value}</span>
+                  </div>
+                )
+            )}
           </div>
           <Link to="/">
             <button>Revenir à l'accueil</button>

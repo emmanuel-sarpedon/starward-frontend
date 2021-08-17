@@ -4,8 +4,7 @@ import "./App.scss";
 // ASSETS
 
 // DEPENDANCIES
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // COMPONENTS / PAGES
 import Header from "./Components/Header/Header";
@@ -31,18 +30,27 @@ function App() {
   return (
     <div className="app">
       <Router>
+        {/* Modal menu */}
         <Menu hidden={menuIsHidden} handleCloseMenu={handleCloseMenu} />
+
+        {/* Header */}
         <Header menuIsHidden={menuIsHidden} handleOpenMenu={handleOpenMenu} />
+
+        {/* Main content */}
         <div className="container">
           <Switch>
-            <Route exact path="/create">
+            {/* Création d'un personnage */}
+            <Route path="/create">
               <Create />
             </Route>
+
+            {/* Détails d'un personnage */}
             <Route path="/character/:id">
               <Character />
             </Route>
 
-            <Route exact path="/">
+            {/* Accueil, vue d'ensemble des personnages */}
+            <Route path="/">
               <Home />
             </Route>
           </Switch>

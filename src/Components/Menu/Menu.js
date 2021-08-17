@@ -4,7 +4,7 @@ import "./Menu.scss";
 // ASSETS
 
 // DEPENDANCIES
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // COMPONENTS / PAGES
 
@@ -15,12 +15,14 @@ const Menu = (props) => {
 
   return (
     <div className={`menu ${hidden ? "hidden" : ""}`}>
-      <i // îcone pour fermeture du menu
+      {/* FontAwesome icon */}
+      <i
         class="fas fa-times fa-1x toggle-menu"
         onClick={handleCloseMenu}
         style={{ display: `${hidden ? "none" : "block"}` }}
       ></i>
 
+      {/* Liens*/}
       <Link to="/" onClick={handleCloseMenu}>
         Accueil
       </Link>

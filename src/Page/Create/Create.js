@@ -15,6 +15,7 @@ import { useState } from "react";
 const Create = () => {
   const url = "https://starwars-app-manu.herokuapp.com/character/create";
 
+  // Déclaration des states
   const [isLoading, setIsLoading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -32,6 +33,60 @@ const Create = () => {
   const [starships, setStarships] = useState("");
   const [pictureUrl, setPictureUrl] = useState("");
 
+  // Déclaration des gestionnaires d'évènements
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleHeight = (e) => {
+    setHeight(e.target.value);
+  };
+
+  const handleMass = (e) => {
+    setMass(e.target.value);
+  };
+
+  const handleHairColor = (e) => {
+    setHairColor(e.target.value);
+  };
+
+  const handleSkinColor = (e) => {
+    setSkinColor(e.target.value);
+  };
+
+  const handleEyeColor = (e) => {
+    setEyeColor(e.target.value);
+  };
+
+  const handleBirthYear = (e) => {
+    setBirthYear(e.target.value);
+  };
+
+  const handleGender = (e) => {
+    setGender(e.target.value);
+  };
+
+  const handleSpecies = (e) => {
+    setSpecies(e.target.value);
+  };
+
+  const handleFilms = (e) => {
+    setFilms(e.target.value);
+  };
+
+  const handleVehicles = (e) => {
+    setVehicles(e.target.value);
+  };
+
+  const handleStarships = (e) => {
+    setStarships(e.target.value);
+  };
+
+  const handlePictureUrl = (e) => {
+    setPictureUrl(e.target.value);
+  };
+
+  // Soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -82,168 +137,147 @@ const Create = () => {
     }
   };
 
+  // Réinitialisation formulaire
+  const handleNewCharacter = () => {
+    setIsLoading(false);
+    setIsSaved(false);
+  };
+
+  // Déclaration des champs du formulaire
+  const inputs = [
+    {
+      name: "Nom du personnage",
+      type: "text",
+      required: true,
+      value: name,
+      onChange: handleName,
+    },
+    {
+      name: "Taille",
+      type: "number",
+      required: true,
+      value: height,
+      onChange: handleHeight,
+    },
+    {
+      name: "Poids",
+      type: "number",
+      required: true,
+      value: mass,
+      onChange: handleMass,
+    },
+    {
+      name: "Couleur des cheveux",
+      type: "text",
+      required: true,
+      value: hairColor,
+      onChange: handleHairColor,
+    },
+    {
+      name: "Couleur de la peau",
+      type: "text",
+      required: true,
+      value: skinColor,
+      onChange: handleSkinColor,
+    },
+    {
+      name: "Couleur des yeux",
+      type: "text",
+      required: true,
+      value: eyeColor,
+      onChange: handleEyeColor,
+    },
+    {
+      name: "Année de naissance",
+      type: "text",
+      required: false,
+      value: birthYear,
+      onChange: handleBirthYear,
+    },
+    {
+      name: "Genre",
+      type: "text",
+      required: true,
+      value: gender,
+      onChange: handleGender,
+    },
+    {
+      name: "Espèce",
+      type: "text",
+      required: false,
+      value: species,
+      onChange: handleSpecies,
+    },
+    {
+      name: "Films",
+      type: "text",
+      required: false,
+      value: films,
+      onChange: handleFilms,
+    },
+    {
+      name: "Véhicule",
+      type: "text",
+      required: false,
+      value: vehicles,
+      onChange: handleVehicles,
+    },
+    {
+      name: "Vaisseau spatial",
+      type: "text",
+      required: false,
+      value: starships,
+      onChange: handleStarships,
+    },
+    {
+      name: "Url image",
+      type: "text",
+      required: false,
+      value: pictureUrl,
+      onChange: handlePictureUrl,
+    },
+  ];
+
   return (
     <div className="create">
       <h1>Créer un nouveau personnage</h1>
-      {isLoading ? (
-        "Enregistrement en cours "
-      ) : isSaved ? (
-        <>
-          <div>Création réussie !</div>
-          <button
-            onClick={() => {
-              setIsLoading(false);
-              setIsSaved(false);
-            }}
-          >
-            Créer un nouveau personnage
-          </button>
-        </>
-      ) : (
+
+      {!isLoading && !isSaved ? (
+        /* Etat initial du formulaire : isLoading === isSaved === false */
         <form onSubmit={handleSubmit}>
-          <label>
-            Nom
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Taille
-            <input
-              type="number"
-              value={height}
-              onChange={(e) => {
-                setHeight(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Poids
-            <input
-              type="number"
-              value={mass}
-              onChange={(e) => {
-                setMass(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Couleur des cheveux
-            <input
-              type="text"
-              value={hairColor}
-              onChange={(e) => {
-                setHairColor(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Couleur de la peau
-            <input
-              type="text"
-              value={skinColor}
-              onChange={(e) => {
-                setSkinColor(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Couleur des yeux
-            <input
-              type="text"
-              value={eyeColor}
-              onChange={(e) => {
-                setEyeColor(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Année de naissance
-            <input
-              type="text"
-              value={birthYear}
-              onChange={(e) => {
-                setBirthYear(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Genre
-            <input
-              type="text"
-              value={gender}
-              onChange={(e) => {
-                setGender(e.target.value);
-              }}
-              required
-            />
-          </label>
-          <label>
-            Espèce
-            <input
-              type="text"
-              value={species}
-              onChange={(e) => {
-                setSpecies(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Film
-            <input
-              type="text"
-              value={films}
-              onChange={(e) => {
-                setFilms(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Véhicule
-            <input
-              type="text"
-              value={vehicles}
-              onChange={(e) => {
-                setVehicles(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Planète
-            <input
-              type="text"
-              value={starships}
-              onChange={(e) => {
-                setStarships(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Url image
-            <input
-              type="text"
-              value={pictureUrl}
-              onChange={(e) => {
-                setPictureUrl(e.target.value);
-              }}
-            />
-          </label>
+          {inputs.map((e) => (
+            <label>
+              {e.name}
+              {e.required && "  *"}
+              <input
+                type={e.type}
+                required={e.required}
+                onChange={e.onChange}
+                value={e.value}
+              />
+            </label>
+          ))}
+
           <button>Créer personnage</button>
+
           <Link to="/">
             <button>Revenir à l'accueil</button>
           </Link>
         </form>
+      ) : isLoading && !isSaved ? (
+        /* Champs complets - Tentative d'enregistrement : isLoading === true, isSaved === false */
+        "Enregistrement en cours"
+      ) : (
+        /* Enregistrement terminé: isSaved === true */
+        <>
+          <div>Création réussie !</div>
+          <button onClick={handleNewCharacter}>
+            Créer un nouveau personnage
+          </button>
+          <Link to="/">
+            <button>Revenir à l'accueil</button>
+          </Link>
+        </>
       )}
     </div>
   );

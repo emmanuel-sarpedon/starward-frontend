@@ -18,7 +18,7 @@ const Home = () => {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nameFilter, setNameFilter] = useState("");
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(5); // nombre de résultats par page
   const [numberOfResults, setNumberOfResults] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
 
@@ -49,6 +49,15 @@ const Home = () => {
     fetchData();
   }, [nameFilter, page, limit]);
 
+  //Gestionnaire d'évènements
+  const handleName = (e) => {
+    setNameFilter(e.target.value);
+  };
+
+  const handleLimit = (e) => {
+    setLimit(Math.max(e.target.value, 1)); // le nombre de résultat par page ne peut être inférieur à 1
+  };
+
   // Pagination
   const paginationLinks = [];
 
@@ -70,23 +79,29 @@ const Home = () => {
       <Link to="/create">
         <button>Créer un personnage</button>
       </Link>
+
+      {/* Filters utilisateur */}
       <div className="filter">
         <label>
           Filtrer par nom :
+          <input type="search" value={nameFilter} onChange={handleName}></input>
+        </label>
+        <label className="limit">
+          Nombre de résultats par page :
           <input
-            type="search"
-            value={nameFilter}
-            onChange={(e) => {
-              setNameFilter(e.target.value);
-            }}
+            type="number"
+            min={1}
+            value={limit}
+            onChange={handleLimit}
           ></input>
         </label>
       </div>
 
+      {/* Pagination */}
       <div className="pagination">
         <div>Nombre de résultats : {numberOfResults || 0}</div>
         <div>
-          {numberOfResults && (
+          {numberOfResults > 0 && (
             <>
               <span>Résultats : {(page - 1) * Math.max(limit, 1) + 1}</span>
               <span> à </span>
@@ -96,18 +111,10 @@ const Home = () => {
             </>
           )}
         </div>
-        <label className="limit">
-          Nombre de résultats par page :
-          <input
-            type="number"
-            min={1}
-            value={limit}
-            onChange={(e) => setLimit(Math.max(e.target.value, 1))}
-          ></input>
-        </label>
         <div className="page-links">{paginationLinks}</div>
       </div>
 
+      {/* Cartes des personnages */}
       <div className="characters-cards">
         {isLoading
           ? "Chargement en cours..."

@@ -5,7 +5,6 @@ import "./Header.scss";
 import logo from "../../assets/star-wars-header.svg";
 
 // DEPENDANCIES
-import { Link } from "react-router-dom";
 
 // COMPONENTS
 
@@ -15,11 +14,14 @@ const Header = (props) => {
   return (
     <div className="header">
       <header>
+        {/* FontAwesome icon */}
         <i
           onClick={handleOpenMenu}
           class="fas fa-bars fa-1x toggle-menu"
           style={{ display: `${!menuIsHidden ? "none" : "block"}` }} // si le menu est visible, on cache l'icône
         ></i>
+
+        {/* Logo starwars */}
         <img src={logo} alt="star-wars" />
       </header>
     </div>
