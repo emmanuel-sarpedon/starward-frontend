@@ -67,6 +67,9 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Link to="/create">
+        <button>Créer un personnage</button>
+      </Link>
       <div className="filter">
         <label>
           Filtrer par nom :
@@ -104,6 +107,14 @@ const Home = () => {
               </Link>
             ))
           : "No results . . . *"}
+      </div>
+
+      <Link to="/create">
+        <button>Créer un personnage</button>
+      </Link>
+
+      <div className="pagination">
+        <div className="page-links">{paginationLinks}</div>
       </div>
     </div>
   );

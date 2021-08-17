@@ -5,6 +5,7 @@ import "./Create.scss";
 
 // DEPENDANCIES
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // COMPONENTS
 
@@ -239,6 +240,9 @@ const Create = () => {
             />
           </label>
           <button>Créer personnage</button>
+          <Link to="/">
+            <button>Revenir à l'accueil</button>
+          </Link>
         </form>
       )}
     </div>

@@ -5,7 +5,7 @@ import "./Character.scss";
 import logo from "../../assets/star-wars-logo2.jpeg";
 
 // DEPENDANCIES
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 // COMPONENTS
@@ -91,6 +91,9 @@ const Character = () => {
               <span>{character.starships}</span>
             </div>
           </div>
+          <Link to="/">
+            <button>Revenir à l'accueil</button>
+          </Link>
         </>
       )}
     </div>
